@@ -28,4 +28,6 @@ WORKDIR /tmp/circleci-to-docker
 #=================================
 #Clone a porject into Docker image
 #=================================
-RUN git clone https://github.com/kiemtech1/circleci-to-dockerhub.git
+RUN git clone https://github.com/kiemtech1/circleci-to-docker.git
+
+RUN npm install
