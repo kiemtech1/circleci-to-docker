@@ -1,0 +1,21 @@
+machine:
+    node:
+        version: v5.9.0
+    services:
+    - docker
+
+dependencies:
+    override:
+    - docker info
+    - docker build -t ktech/circleci.to.dockerhub .
+
+test:
+    override:
+    - node ./node_modules/.bin/cucumber-js -r features/step_definitions
+
+deployment:
+    hub:
+        branch: master
+        commands:
+        - docker login --username=ktech --password=dockerhubpw --email=ktech@fanatics.com
+        - docker push ktech/circleci.to.dockerhub
